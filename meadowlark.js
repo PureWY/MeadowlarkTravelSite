@@ -1,7 +1,8 @@
 var express = require('express');
 var fortune = require('./lib/fortune.js');
 var weatherData = require('./lib/weatherData.js');
-var formidable = require('formidable');
+var credentials = require('./credentials.js');
+var session = require('express-session');
 
 var app = express();
 
@@ -22,6 +23,20 @@ var handlebars = require('express3-handlebars')
 	);
 app.engine('hbs',handlebars.engine);
 app.set('view engine','hbs');
+
+//引入Cookie与内存存储
+app.use(require('cookie-parser')(credentials.cookieSecret));
+app.use(session({
+	secret: 'cookieSecret',//作为服务器端生成session的签名
+ 	resave: true,          //(是否允许)当客户端并行发送多个请求时，其中一个请求在另一个请求结束时对session进行修改覆盖并保存。
+ 	saveUninitialized:true //初始化session时是否保存到存储
+}));
+app.use(function(req,res,next){
+// 	//如果有即显消息，把它传到上下文中，然后清除它
+	res.locals.flash = req.session.flash;
+	delete req.session.flash;
+	next();
+})
 
 app.use(express.static(__dirname + '/public'));
 app.use(require('body-parser')());  //post解析URL编码
