@@ -1,7 +1,7 @@
 var express = require('express');
 var fortune = require('./lib/fortune.js');
 var weatherData = require('./lib/weatherData.js');
-var formidable = require('formidable');
+var credentials = require('./credentials.js');
 
 var app = express();
 
