@@ -1,7 +1,14 @@
 body{
-	margin: 20px;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    width: 100%;
+    height: 960px;
 }
 .headerTitle{
+    display: block;
+    position: absolute;
+    margin: 20px;
 	font-size: 1.5rem;
 }
 .signForm{
