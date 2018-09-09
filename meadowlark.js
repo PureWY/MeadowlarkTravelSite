@@ -1,8 +1,12 @@
 var express = require('express');
+var connect = require('connect');  //原先捆绑的中间件，其中包括一些基本的以及一些以及废弃的中间件
 var fortune = require('./lib/fortune.js');
 var weatherData = require('./lib/weatherData.js');
 var credentials = require('./credentials.js');
 var session = require('express-session');
+var nodemailer = require('nodemailer');
+var mongoose = require('mongoose');
+var Vacation = require('./models/vacation.js');
 
 var app = express();
 
@@ -29,7 +33,7 @@ app.use(require('cookie-parser')(credentials.cookieSecret));
 app.use(session({
 	secret: 'cookieSecret',//作为服务器端生成session的签名
  	resave: true,          //(是否允许)当客户端并行发送多个请求时，其中一个请求在另一个请求结束时对session进行修改覆盖并保存。
- 	saveUninitialized:true //初始化session时是否保存到存储
+ 	saveUninitialized:true //初始化session时是否保存到存储。
 }));
 app.use(function(req,res,next){
 // 	//如果有即显消息，把它传到上下文中，然后清除它
@@ -46,6 +50,90 @@ app.use(function(req,res,next){
 	res.locals.partials.weather = weatherData.getWeatherData();
 	next();
 })
+
+//创建一个Nodemailer实例
+// var mailTransport = nodemailer.createTransport('SMTP',{
+// 	service: 'Gmail',
+// 	auth: {
+// 		user: credentials.gmail.user,
+// 		pass: credentials.gmail.password
+// 	}
+// })
+
+//简单的发送邮件
+// mailTransport.sendMail({
+// 	from: '"Meadowlark Travel" <info@meadowlarktrvel.com>',
+// 	to: 'joecustomer@gmail.com, "Jane Customer" <jane@yahoo.com>,' + 'fred@hotmail.com',  //支持发送多个用户，中间用逗号隔开
+// 	subject: 'Your Meadowlark Travel Tour',
+// 	text: 'Thank you for booking your trip with Meadowlark Travel.' + 'We look forward to your visit!',
+// },function(err){
+// 	if(err) console.error('Unable to send email: ' + error);
+// })
+
+//数据库处理部分
+var opts = {
+	server: {
+		socketOptions: { keepAlive: 1}
+	}
+};
+
+//创建度假包的数据
+Vacation.find(function(err,vacations){
+	if(vacations.length) return;
+
+	new Vacation({
+		name: 'Hood River Fay Trip',
+		slug: 'Hood-river-day-trip',
+		category: 'Day Trip',
+		sku: 'HR199',
+		description: 'Spend a day sailing on the Columbia and ' + 'enjoying craft beers in Hood River',
+		priceInCents: 9995,
+		tags: ['day trip','hood river','sailing','windsurfing','breweries'],
+		inSeason: true,
+		maximumGuests: 16,
+		available: true,
+		packagesSold: 0,
+	}).save();
+	new Vacation({
+		name: 'Oregon Coast Getaway',
+		slug: 'oregon-coast-getaway',
+		category: 'Weekend Getaway',
+		sku: 'OC39',
+		description: 'Enjoy the ocean air and quaint coastal towns!', 
+		priceInCents: 269995,
+		tags: ['weekend getaway', 'oregon coast', 'beachcombing'], 
+		inSeason: false,
+		maximumGuests: 8,
+		available: true,
+        packagesSold: 0,
+    }).save();
+    new Vacation({
+		name: 'Rock Climbing in Bend',
+		slug: 'rock-climbing-in-bend',
+		category: 'Adventure',
+		sku: 'B99',
+		description: 'Experience the thrill of climbing in the high desert.', 
+		priceInCents: 289995,
+		tags: ['weekend getaway', 'bend', 'high desert', 'rock climbing'], 
+		inSeason: true,
+		requiresWaiver: true,
+		maximumGuests: 4,
+		available: false,
+		packagesSold: 0,
+		notes: 'The tour guide is currently recovering from a skiing accident.',
+    }).save();
+})
+
+switch (app.get('env')) {
+	case 'development':
+		mongoose.connect(credentials.mongo.development.connectionString,opts);
+		break;
+	case 'production':
+		mongoose.connect(credentials.mongo.production.connectionString,opts);
+		break;
+	default:
+		throw new Error('Unknown execution enviroment: ' + app.get('env'));
+}
 
 //普通表单处理
 app.get('/',function(req,res){
@@ -114,6 +202,24 @@ app.post('/contest/vacation-photo/:year/:month',function(req,res){
 		console.log('received files');
 		console.log(files);
 		res.redirect(303,'/thank-you');
+	})
+})
+
+//数据库配套页面
+app.get('/vacations',function(req,res){
+	Vacation.find({available: true},function(err,vacations){
+		var context = {
+			vacations: vacations.map(function(vacation){
+				return{
+					sku: vacation.sku,
+					name: vacation.name,
+					description: vacation.description,
+					price: vacation.price(),
+					inSeason: vacation.inSeason,
+				}
+			})
+		};
+	res.render('vacations');
 	})
 })
 
