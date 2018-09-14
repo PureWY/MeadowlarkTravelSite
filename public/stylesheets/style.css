@@ -4,17 +4,29 @@ body{
     text-decoration: none;
     width: 100%;
     height: 960px;
+    /* background-image: url(/img/back.jpg); */
+    background-size: cover;
 }
 .headerTitle{
     display: block;
-    position: absolute;
+    position: relative;
     margin: 20px;
-	font-size: 1.5rem;
+    font-size: 1.5rem;
 }
 .signForm{
-	position: absolute;
-    width: 25%;
-    height: 35%;
-    right: 50px;
+    position: absolute;
+    background-color: deepskyblue;
+    color: white;
+    width: 40%;
+    height: 40%;
+    /* right: 150px; */
+    right: 40%;
     top: 300px;
+    padding: 50px;
+}
+.loginHeader{
+    margin-left: 25%;
+}
+.loginInput{
+    width: 90%;
 }
