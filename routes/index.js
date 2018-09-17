@@ -3,11 +3,13 @@ var router = express.Router();
 var user = require('./login.js')
 var main = require('./main.js')
 var loginOut = require('./loginOut.js')
+var register = require('./register.js')
 
 var routers = function (app) {
     app.use('/', main);
     app.use('/login', user);
     app.use('/loginOut', loginOut);
+    app.use('/register', register);
 
     //定制404页面
     app.use(function(req,res){

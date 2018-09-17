@@ -1,32 +1,67 @@
 body{
     margin: 0;
     padding: 0;
-    text-decoration: none;
-    width: 100%;
-    height: 960px;
-    /* background-image: url(/img/back.jpg); */
+}
+.main{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+    opacity: 0.5;
+    background: url(../img/back.jpg);
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    background-position: 50% 50%;
     background-size: cover;
 }
-.headerTitle{
+.outScroll{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    overflow-y: auto;
+}
+.outScroll>div{
     display: block;
-    position: relative;
+    width: 350px;
+    height: 450px;
+    margin: 100px auto 100px;
+    padding: 5px;
+    cursor: pointer;
+    z-index: 3;
+    color: black;
+    background-color: white;
+    /* border: 2px solid goldenrod; */
+    border-radius: 15px;
+    background-position: 0 -115px;
+}
+.header{
     margin: 20px;
+    display: flex;
+    text-align: center;
     font-size: 1.5rem;
+    font-weight: bold;
+    justify-content: center;
 }
-.signForm{
-    position: absolute;
-    background-color: deepskyblue;
-    color: white;
-    width: 40%;
-    height: 40%;
-    /* right: 150px; */
-    right: 40%;
-    top: 300px;
-    padding: 50px;
+.loginTitle{
+    text-align: center;
 }
-.loginHeader{
-    margin-left: 25%;
+.loginTitle>span{
+    color: darkgray;
 }
-.loginInput{
-    width: 90%;
+.loginForm{
+    margin: 20px;
+}
+.registerBtn{
+    border: 1px solid goldenrod;
+}
+.registerWarning{
+    text-align: center;
+    color: red;
+    font-size: 0.9rem;
 }

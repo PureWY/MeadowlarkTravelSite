@@ -1,11 +1,9 @@
 var express = require('express');
-var fortune = require('./lib/fortune.js');
-var weatherData = require('./lib/weatherData.js');
 var credentials = require('./credentials.js');
 var session = require('express-session');
 var mongoose = require('./config/mongoose.js');
-var Vacation = require('./models/vacation.js');
 var bodyParser = require('body-parser');
+var Card = require('./models/Card.js');
 
 //路由配置
 var routes = require('./routes');
@@ -34,7 +32,9 @@ app.set('view engine','hbs');
 //模板段落中间件
 app.use(function(req,res,next){
 	if(!res.locals.partials) res.locals.partials = {};
-	res.locals.partials.weather = weatherData.getWeatherData();
+	Card.find(function(err,docs){
+		res.locals.partials.travelCard = docs;
+	})
 	next();
 })
 

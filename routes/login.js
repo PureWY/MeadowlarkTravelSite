@@ -13,9 +13,8 @@ router.post('/',function(req,res,next){
         username: req.body.userName,
         password: req.body.passWord
     },(err,doc)=>{
-        console.log(doc)
         if(err){
-            res.send('Mongod Server Error');
+            res.send('数据库异常');
         }else if(!doc){
             res.send('用户名或密码错误');
         }else{
