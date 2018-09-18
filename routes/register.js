@@ -10,13 +10,13 @@ router.get('/',function(req,res,next){
 router.post('/',function(req,res,next){
     if(req.body.passWord != req.body.confirmPassWord){
         res.send({
-            code: 500,
-            message: '两次密码输入的不一致，请重新输入!'
+            code: 200,
+            message: "两次密码输入的不一致，请重新输入!"
         });
     }else if(!req.body.userName){
         res.send({
-            code: 501,
-            message: '请输入正确的表单信息!'
+            code: 200,
+            message: "请输入正确的表单信息!"
         });
     }else{
         User.findOne({
@@ -24,25 +24,25 @@ router.post('/',function(req,res,next){
         },(err,doc)=>{
             if(err){
                 res.send({
-                    code: 501,
-                    message: '数据库异常!'
+                    code: 200,
+                    message: "数据库异常!"
                 });
             }else if(doc){
                 res.send({
-                    code: 501,
-                    message: '该用户已存在，请登录!'
+                    code: 200,
+                    message: "该用户已存在，请登录!"
                 });
             }else{
                 User.create({username: req.body.userName,password: req.body.passWord},(err,doc1)=>{
                     if(err){
                         res.send({
-                            code: 501,
-                            message: '数据库异常!'
+                            code: 500,
+                            message: "数据库异常!"
                         });
                     }else{
                         res.send({
-                            code: 501,
-                            message: '注册成功!'
+                            code: 201,
+                            message: "注册成功!"
                         });
                     }
                 });  
