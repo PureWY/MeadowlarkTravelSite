@@ -14,15 +14,24 @@ router.post('/',function(req,res,next){
         password: req.body.passWord
     },(err,doc)=>{
         if(err){
-            res.send('数据库异常');
+            res.send({
+                code: 200,
+                message: "数据库异常!"
+            });
         }else if(!doc){
-            res.send('用户名或密码错误');
+            res.send({
+                code: 200,
+                message: "用户名或密码错误!"
+            });
         }else{
             req.session.userName = {
                 _id:doc._id,
                 username:doc.username
             };
-            res.render('main')
+            res.send({
+                code: 201,
+                message: "登录成功!"
+            });
         }
     })
 })
