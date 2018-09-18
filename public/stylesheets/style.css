@@ -65,3 +65,143 @@ body{
     color: red;
     font-size: 0.9rem;
 }
+
+/* 主页面部分 */
+.mainContainer{
+    position: relative;
+    min-height: 100%;
+    background: white;
+    color: white;
+}
+.content1{
+    position: relative;
+    width: 100%;
+    height: 640px;
+    min-width: 980px;
+    overflow: hidden;
+    background-color: #2d3a40;
+}
+.wrapper{
+    max-width: 1920px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+.bg{
+    height: 100%;
+    background: url(../img/mainBack.jpg) no-repeat;
+    background-size: 100% 100%;
+    max-width: 1920px;
+    opacity: 0.5;
+    width: 100%;
+    position: absolute;
+}
+.content{
+    position: relative;
+    left: 50%;
+    width: 1220px;
+    height: 640px;
+    margin-left: -610px;
+    text-align: center;
+}
+.bgHeader{
+    width: 1220px;
+    height: 120px;
+    margin: 0 auto;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    line-height: 120px;
+    padding: 0 20px 0 20px;
+}
+.bgContent{
+    width: 100%;
+    height: 313px;
+}
+.headerLogo{
+    width: 200px;
+    position: relative;
+    color: white;
+    font-size: 1.4rem;
+    cursor: pointer;
+    float: left;
+}   
+.bgNav{
+    float: left;
+    list-style-type: disc;
+    display: block;
+}
+.bgNav>li{
+    width: 60px;
+    float: left;
+    font-size: 1.6rem;
+    position: relative;
+    margin-left: 40px;
+    list-style: none;
+    cursor: pointer;
+}
+.headerForm{
+    width: 320px;
+    height: 100%;
+    margin-left: 80px;
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.headerSearch{
+    width: 320px;
+    position: relative;
+}
+.headerSearch>input{
+    width: 320px;
+    height: 60px;
+    border: none;
+    color: white;
+    padding-left: 20px;
+    padding-right: 60px;
+    border-radius: 4px;
+    line-height: 60px;
+    background-color: rgba(255,255,255,0.1);
+    box-sizing: border-box;
+}
+.headerSearch>button{
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: -15px;
+}
+.headerSearch>button>i{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 25px;
+    top: 60px;
+    background: url(../img/search.png);
+}
+.headerSearch>input::-webkit-input-placeholder{
+    font-weight: lighter;
+    color: whitesmoke;
+}
+.headerLogin{
+    float: right;
+    width: 100px;
+    height: 100%;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+.headerLogin>a{
+    color: white;
+    text-decoration: none;
+}
+.contentLink{
+    width: 400px;
+    height: 200px;
+    margin: 0 auto;
+    position: relative;
+    margin-top: 130px;
+}
+.bgContent>a{
+    color: white;
+    text-decoration: none;
+    font-size: 2rem;
+}
