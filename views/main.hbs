@@ -21,8 +21,23 @@
                             </div>
                         </form>
                         <div class="headerLogin">
-                            <a href="/login">登录 /</a>
-                            <a href="/register">注册</a>
+                            {{#if username}}
+                                <a>{{username}} </a>
+                                <div class="subitem">
+                                    <div>
+                                        <a href="#">我的行程</a>
+                                    </div>
+                                    <div>
+                                        <a href="#">个人中心</a>
+                                    </div>
+                                    <div>
+                                        <a href="/loginOut">退出登录</a>
+                                    </div>
+                                </div>
+                            {{else}}
+                                <a href="/login">登录 /</a>
+                                <a href="/register">注册</a>
+                            {{/if}}
                         </div>
                     </div>
                 </div>
@@ -112,4 +127,10 @@
             $(this).parent().removeClass("hoverItem");
         });
         });
+        $('.headerLogin').hover(function(){
+            $(this).addClass("headerLoginHover");
+        })
+        $('.headerLogin').mouseleave(function(){
+            $(this).removeClass("headerLoginHover")
+        })
 </script>
