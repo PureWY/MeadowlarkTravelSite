@@ -24,7 +24,7 @@ router.post('/',function(req,res,next){
                 message: "用户名或密码错误!"
             });
         }else{
-            req.session.userName = {
+            req.session.userInfo = {
                 _id:doc._id,
                 username:doc.username
             };
