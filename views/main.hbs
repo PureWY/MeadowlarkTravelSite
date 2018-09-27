@@ -25,13 +25,91 @@
                             <a href="/register">注册</a>
                         </div>
                     </div>
-                    <div class="bgContent">
-                        <a href="/">
-                            <div class="contentLink">世界这么大，我想去看看。</div>
-                        </a>
+                </div>
+            </div>
+        </div>
+        <div class="content2">
+                <ul>
+                    <li><img src="img/header2.jpg"></li>
+                </ul>
+                <span><span class="headerName">踩在浪花上：</span>出发吧，既然你想到去看海了</span>
+                <ul>
+                    <li><img src="img/header3.jpg"></li>
+                </ul>
+                <span><span class="headerName">云一朵朵：</span>花依然盛开着呢，她依然在等你呢</span>
+                <ul>
+                    <li><img src="img/header4.jpg"></li>
+                </ul>
+                <span><span class="headerName">故乡呢：</span>毕业了，你欠我的那场旅行该还给我了</span>
+        </div>
+        <div class="content3">
+            <div class="section">
+                <ul id="tabs">
+                    <li class="active">
+                        <a title="tab1" href="#">亚洲</a>
+                    </li>
+                    <li>
+                        <a title="tab2" href="#">欧洲</a>
+                    </li>
+                    <li>
+                        <a title="tab3" href="#">美洲</a>
+                    </li>
+                    <li>
+                        <a title="tab4" href="#">大洋洲</a>
+                    </li>
+                    <li>
+                        <a title="tab5" href="#">全球</a>
+                    </li>
+                </ul>
+
+                <div id="sectionContent">
+                    <div id="tab1" class="item show">
+                        <div class="tabContent">
+
+                        </div>
+                    </div>
+                    <div id="tab2" class="item">
+                        <div class="tabContent">
+
+                        </div>
+                    </div>
+                    <div id="tab3" class="item">
+                        <div class="tabContent">
+
+                        </div>
+                    </div>
+                    <div id="tab4" class="item">
+                        <div class="tabContent">
+
+                        </div>
+                    </div>
+                    <div id="tab5" class="item">
+                        <div class="tabContent">
+
+                        </div>
                     </div>
                 </div>
+                
             </div>
         </div>
     </div>
 {{> travelCard}}
+<script>
+    $(document).ready(function(){
+        $('#tabs a').click(function(e) {
+          e.preventDefault();                
+          $('#tabs li').removeClass("active").removeClass("hoverItem");
+          $(this).parent().addClass("active");
+          $("#sectionContent div").removeClass("show");
+          $('#' + $(this).attr('title')).addClass('show');
+        });
+
+        $('#tabs a').hover(function(){
+            if(!$(this).parent().hasClass("active")){
+                $(this).parent().addClass("hoverItem");
+            }
+        },function(){
+            $(this).parent().removeClass("hoverItem");
+        });
+        });
+</script>
