@@ -48,7 +48,7 @@ app.use(session({
  	resave: true,          //(是否允许)当客户端并行发送多个请求时，其中一个请求在另一个请求结束时对session进行修改覆盖并保存。
 	saveUninitialized:false, //初始化session时是否保存到存储。
 	cookie: {
-		maxAge: 1000 * 60 *3  //设置session的有效时间，单位毫秒
+		maxAge: 1000 * 60 * 5  //设置session的有效时间，单位毫秒
 	} 
 }));
 

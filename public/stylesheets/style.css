@@ -98,7 +98,7 @@ ul{
 }
 .bg{
     height: 100%;
-    background: url(../img/mainBack4.jpg) no-repeat;
+    background: url(../img/mainBack5.jpg) no-repeat;
     background-size: 100% 100%;
     max-width: 1920px;
     opacity: 0.7;
@@ -197,6 +197,9 @@ ul{
 }
 .headerLoginHover .subitem{
     display: block;
+}
+.userName{
+    color: lightgoldenrodyellow;
 }
 .subitem{
     width: 125px;
@@ -350,7 +353,192 @@ ul{
     background-color: #4AA680;
 }
 .tabContent{
-    width: 100%;
+    width: 1200px;
     height: 1038px;
-    background-color: #00a680;
+    padding-left: 0;
+    position: relative;
+    left: -30px;
+}
+.tabContent li{
+    width: 370px;
+    padding-top: 220px;
+    margin: 0 0 30px 30px;
+    border: 1px solid #e9e8e6;
+    border-bottom-color: #dad7c8;
+    background: #fff;
+    position: relative;
+    float: left;
+    transition: box-shadow 100ms linear;
+}
+.tabContent>li>a{
+    width: 370px;
+    height: 220px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #eee;
+    line-height: 220px;
+    text-align: center;
+}
+.tabContent>li>.title{
+    height: 38px;
+    margin: 0 15px;
+    border-bottom: 1px solid #f6f6f6;
+    position: relative;
+    white-space: nowrap;
+    overflow: hidden;text-overflow: ellipsis;
+    font-size: 0;
+    line-height: 48px;
+}
+.tabContent>li>.counts{
+    height: 21px;
+    margin: 12px 0;
+    color: #999;
+    font-size: 0;
+}
+.tabContent>li>a>.reviews{
+    padding: 0 15px;
+    height: 40px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    line-height: 1rem;
+    text-align: left;
+    background: linear-gradient(to bottom,rgba(0,0,0,0) 0,rgba(0,0,0,0.4) 25%,rgba(0,0,0,0.9) 100%);
+}
+.tabContent>li>a>.reviews>span{
+    display: block;
+    padding: 10px 2px;
+    font-size: 14px;
+    line-height: 14px;
+    text-align: left;
+    color: #fff;
+    font-weight: 100;
+}
+.tabContent>li>a>.reviews>span>span{
+    margin-left: 5px;
+}
+.tabContent>li>a>.reviews>span>img{
+    width: 18px;
+    height: 18px;
+    border: 1px solid #fff;
+    margin-left: -2px;
+    border-radius: 100%;
+    vertical-align: middle;
+    background: #fff;
+}
+.tabContent>li>a>.backImg{
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    overflow: hidden;
+}
+.tabContent>li>a>.backImg>img{
+    width: 370px;
+    height: 220px;
+    margin-top: 0;
+}
+.tabContent>li>.title>.countryName{
+    margin-right: 10px;
+    color: #2c2c2c;
+    font-size: 18px;
+}
+.tabContent>li>.title>.countryName:hover{
+    color: #069;
+}
+.tabContent>li>.title>.countryName::after{
+    content: '';
+    width: 1px;
+    height: 14px;
+    left: 45px;
+    top: 16px;
+    position: absolute;
+    background-color: #ccc;
+}
+.tabContent>li>.title>.cityName{
+    color: #2c2c2c;
+    font-size: 18px;
+    margin-left: 10px;
+}
+.tabContent>li>.title>.cityName:hover{
+    color: #069;
+}
+.tabContent>li>.title>.wrap-popIcons{
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    overflow: hidden;
+}
+.tabContent>li>.title>.wrap-popIcons>.popIcons{
+    height: 100%;
+    font-size: 0;
+    white-space: nowrap;
+}
+.tabContent>li>.title>.wrap-popIcons>.popIcons>.popIcon{
+    display: inline-block;
+    width: 55px;
+    margin-left: 10px;
+    border-radius: 3px;
+    color: #fff;
+    overflow: hidden;
+    font-size: 12px;
+    line-height: 24px;
+    font-weight: bold;
+    vertical-align: middle;
+}
+.tabContent>li>.title>.wrap-popIcons>.popIcons>.popIcon>span{
+    margin-left: 23px;
+}
+.tabContent>li>.title>.wrap-popIcons>.popIcons>.travel{
+    background-color: #498e6c;
+}
+.tabContent>li>.title>.wrap-popIcons>.popIcons>.travel:hover{
+    background-color: forestgreen;
+}
+.tabContent>li>.title>.wrap-popIcons>.popIcons>.guide{
+    background-color: #4f92b8;
+}
+.tabContent>li>.title>.wrap-popIcons>.popIcons>.guide:hover{
+    background-color: slateblue;
+}
+.tabContent>li>.title>.wrap-popIcons>.popIcons>.travel::before{
+    content: url(../img/book.png);
+    position: absolute;
+    top: 16px;
+    left: 14px;
+}
+.tabContent>li>.title>.wrap-popIcons>.popIcons>.guide::before{
+    content: url(../img/guide.png);
+    position: absolute;
+    top: 14px;
+    right: 33px;
+}
+.tabContent>li>.counts>span{
+    display: inline-block;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+}
+.tabContent>li>.counts>.hotelsCount{
+    width: 103px;
+    padding-left: 15px;
+    text-align: left;
+}
+.tabContent>li>.counts>.eateryCount{
+    width: 120px;
+}
+.tabContent>li>.counts>.attractionCount{
+    width: 126px;
+    border-left: 1px solid #eee;
+    border-right: 1px solid #eee;
+}
+.tabContent>li>.counts>span>a{
+    color: #999;
+}
+.tabContent>li>.counts>span>a:hover{
+    color: #069;
 }
