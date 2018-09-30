@@ -38,6 +38,8 @@ app.use(function(req,res,next){
 	next();
 })
 
+
+
 //连接数据库
 var db = mongoose();
 
