@@ -5,6 +5,9 @@ var mongoose = require('./config/mongoose.js');
 var bodyParser = require('body-parser');
 var Card = require('./models/Card.js');
 
+//引入本地数据
+var cardData = require('./lib/travelCard.js');
+
 //路由配置
 var routes = require('./routes');
 
@@ -24,18 +27,21 @@ var handlebars = require('express3-handlebars')
 					return null;
 				}
 			}
-		},
-	);
+	},
+);
 app.engine('hbs',handlebars.engine);
 app.set('view engine','hbs');
 
 //模板段落中间件
 app.use(function(req,res,next){
 	if(!res.locals.partials) res.locals.partials = {};
-	Card.find(function(err,docs){
-		res.locals.partials.travelCard = docs;
-	})
+	// Card.find(function(err,docs){
+	// 	res.locals.partials.travelCard = docs;
+	// })
+	res.locals.partials.travelCard = cardData.getCardData().data;
+	console.log(res.locals.partials.travelCard)
 	next();
+	// res.send(cardData.getCardData().data);
 })
 
 

@@ -1,9 +1,46 @@
 <div class="travelCard">
     {{#each partials.travelCard}}
-        <div class="cardInfo">
-            <h3>{{name}}</h3>
-            <img src="{{cardImgUrl}}" alt="{{cardImgName}}">
-            <span>{{price}}</span>
-        </div>
+        <li>
+            <a>
+                <span class="ranking"></span>
+                <div class="reviews">
+                    <span>
+                        <img src={{icon1Url}}>
+                        <img src={{icon2Url}}>
+                        <img src={{icon3Url}}>
+                        <img src={{icon4Url}}>
+                        <span>{{suggestCount}}条点评和建议 </span>
+                    </span>
+                </div>
+                <span class="backImg">
+                    <img src={{backImgUrl}}>
+                </span>
+            </a>
+            <div class="title">
+                <a href="#" class="countryName">{{countryName}}</a>
+                <a href="#" class="cityName">{{cityName}}</a>
+                <div class="wrap-popIcons">
+                    <div class="popIcons">
+                        <a href="#" class="travel popIcon">
+                            <span>游记</span>
+                        </a>
+                        <a href="#" class="guide popIcon">
+                            <span>指南</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="counts">
+                <span class="hotelsCount">
+                    <a href="#">酒店 {{hotelCount}}</a>
+                </span>
+                <span class="attractionCount">
+                    <a href="#">景点 {{landCount}}</a>
+                </span>
+                <span class="eateryCount">
+                    <a href="#">餐厅 {{restaurantCount}}</a>
+                </span>
+            </div>
+        </li>
     {{/each}}
 </div>
